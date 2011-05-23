@@ -27,6 +27,7 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 /*
@@ -190,7 +191,12 @@ public class Torch extends Activity implements Eula.OnEulaAgreedTo {
     }
     setContentView(R.layout.main);
     button = findViewById(R.id.button);
+    disablePhoneSleep();
     Log.i(TAG, "onCreate");
+  }
+
+  private void disablePhoneSleep() {
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
   }
 
   @Override
